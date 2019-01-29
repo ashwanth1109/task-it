@@ -5,6 +5,10 @@
     "repository": "https://github.com/ashwanth1109/task-it.git",
     "author": "Ashwanth A R <ashwanth1109@gmail.com>",
     "license": "MIT",
+    "engines": {
+        "node": "11.7.0",
+        "yarn": "1.13.0"
+    },
     "scripts": {
         "dev": "nodemon server/server.js --watch server --exec babel-node --presets=@babel/preset-env",
         "build": "next build",
@@ -24,6 +28,7 @@
         "next": "^7.0.2",
         "next-redux-wrapper": "^3.0.0-alpha.0",
         "nodemon": "^1.18.9",
+        "prop-types": "^15.6.2",
         "react": "^16.7.0",
         "react-dom": "^16.7.0",
         "react-redux": "^6.0.0",

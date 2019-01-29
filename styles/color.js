@@ -4,7 +4,10 @@
 const color = {
     white: "#fff",
     cream: "#fafafa",
-    orange: "#F6511D"
+    lightGray: "#eee",
+    orange: "#F66031",
+    blue: "#2b88d9",
+    lightBlue: "#4094dd"
 };
 // ------------------------------------------------------------
 // export color

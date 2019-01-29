@@ -3,10 +3,15 @@
 // ------------------------------------------------------------
 import { labelInput as s } from "../styles/component";
 import PropTypes from "prop-types";
+import withRedux from "../lib/redux/withRedux";
 // ------------------------------------------------------------
 // LabelInput component
 // ------------------------------------------------------------
 class LabelInput extends React.Component {
+    componentDidMount({ formRefs, updateState, title } = this.props) {
+        formRefs[title] = this.refs[title];
+        updateState("FORM_REFS", formRefs);
+    }
     render({ icon, title, type, onFocus, onBlur } = this.props) {
         return (
             <div style={s.container}>
@@ -44,4 +49,4 @@ LabelInput.defaultProps = {
 // ------------------------------------------------------------
 // export LabelInput
 // ------------------------------------------------------------
-export default LabelInput;
+export default withRedux(LabelInput, true, true);

@@ -1,12 +1,12 @@
 // ------------------------------------------------------------
 // import dependencies
 // ------------------------------------------------------------
-import { card as s } from "../styles/component";
+import { card } from "../styles/component";
 // ------------------------------------------------------------
 // Card component
 // ------------------------------------------------------------
 const Card = ({ children, style }) => (
-    <div style={{ ...s.container, ...style }}>{children}</div>
+    <div style={{ ...card, ...style }}>{children}</div>
 );
 // ------------------------------------------------------------
 // export Card

@@ -25,7 +25,9 @@ class MyDoc extends Document {
                             margin: 0;
                             padding: 0;
                         }
-                        
+                        *:focus {
+                            outline: none;
+                        }
                     `}</style>
                 </Head>
                 {/* Add body styles here */}

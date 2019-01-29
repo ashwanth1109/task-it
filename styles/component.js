@@ -14,8 +14,17 @@ export const index = {
         backgroundColor: color.cream
     },
     cardContainer: {
-        margin: "15px 0",
+        margin: "50px 0",
         ...font.Lato
+    },
+    button: {
+        margin: "20px auto"
+    },
+    signUp: {
+        width: "100%",
+        ...common.fCenter,
+        color: color.blue,
+        marginBottom: "20px"
     }
 };
 // ------------------------------------------------------------
@@ -32,7 +41,8 @@ export const card = {
 // ------------------------------------------------------------
 export const labelInput = {
     container: {
-        ...common.row
+        ...common.row,
+        borderBottom: `1px solid ${color.lightGray}`
     },
     label: {
         width: "60px",
@@ -50,4 +60,16 @@ export const labelInput = {
         lineHeight: "15px",
         color: "#666"
     }
+};
+// ------------------------------------------------------------
+// button component
+// ------------------------------------------------------------
+export const button = {
+    width: "320px",
+    height: "40px",
+    ...common.fCenter,
+    ...font.white,
+    borderRadius: "3px",
+    cursor: "pointer",
+    transition: "0.3s ease-in-out background-color"
 };

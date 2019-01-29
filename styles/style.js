@@ -14,5 +14,16 @@ export const common = {
     center: {
         justifyContent: "center",
         alignItems: "center"
+    },
+    fCenter: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    }
+};
+
+export const font = {
+    Lato: {
+        fontFamily: "Lato, sans-serif"
     }
 };

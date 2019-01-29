@@ -1,3 +1,5 @@
+import color from "./color";
+
 export const common = {
     fScreen: {
         width: "100vw",
@@ -19,11 +21,17 @@ export const common = {
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
+    },
+    mAuto: {
+        margin: "0 auto"
     }
 };
 
 export const font = {
     Lato: {
         fontFamily: "Lato, sans-serif"
+    },
+    white: {
+        color: color.white
     }
 };

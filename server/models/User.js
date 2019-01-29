@@ -56,6 +56,26 @@ class UserClass {
             console.log(err);
         }
     }
+    // ------------------------------------------------------------
+    // static method to verify login credentials for existing user
+    // ------------------------------------------------------------
+    static async login({ username, password }) {
+        try {
+            const user = await this.findOne({ username });
+            if (user) {
+                const isMatch = await bcrypt.compare(password, user.password);
+                if (isMatch) {
+                    return { user };
+                } else {
+                    return { error: "password doesn't match" };
+                }
+            } else {
+                return { error: "user not found" };
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 // ------------------------------------------------------------
 // load class properties into schema

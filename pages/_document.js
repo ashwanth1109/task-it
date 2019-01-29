@@ -16,7 +16,7 @@ class MyDoc extends Document {
                         content="width=device-width, initial-scale=1, shrink-to-fit=no"
                     />
                     <link
-                        href="https://fonts.googleapis.com/css?family=Lato:300,400"
+                        href="https://fonts.googleapis.com/css?family=Lato:400"
                         rel="stylesheet"
                     />
                     {/* global styles go here - also hover, keyframe animations etc. */}
@@ -27,6 +27,12 @@ class MyDoc extends Document {
                         }
                         *:focus {
                             outline: none;
+                        }
+                        .btn {
+                            background-color: #2b88d9;
+                        }
+                        .btn:hover {
+                            background-color: #4094dd;
                         }
                     `}</style>
                 </Head>

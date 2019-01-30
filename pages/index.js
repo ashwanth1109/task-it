@@ -9,10 +9,10 @@ import withRedux from "../lib/redux/withRedux";
 import LabelInput from "../components/LabelInput";
 import Button from "../components/Button";
 import { loginUser } from "../lib/api/user";
-import { getSecretVariable } from "../utility";
 // ------------------------------------------------------------
 // index page stateless component
 // ------------------------------------------------------------
+
 class Index extends React.Component {
     // ------------------------------------------------------------
     // component state => highlight
@@ -20,9 +20,6 @@ class Index extends React.Component {
     state = {
         highlight: false
     };
-    componentDidMount() {
-        console.log(process.env);
-    }
     // ------------------------------------------------------------
     // function to highlight logo
     // ------------------------------------------------------------

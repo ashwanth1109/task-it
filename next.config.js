@@ -1,21 +1,14 @@
 // ------------------------------------------------------------
-// webpack config to use process environment variables
+// dotenv config to use process environment variables
 // ------------------------------------------------------------
-const webpack = require("webpack");
-const dotenv = require("dotenv");
-// console.log(process.env);
+require("dotenv").config();
 
 // ------------------------------------------------------------
-// webpack config options
+// next config options
 // ------------------------------------------------------------
-module.exports = () => {
-    const env = dotenv.config().parsed;
-    const envKeys = Object.keys(env).reduce((acc, curr) => {
-        acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
-        return acc;
-    }, {});
-    console.log(envKeys);
-    return {
-        plugins: [new webpack.DefinePlugin(envKeys)]
-    };
+module.exports = {
+    publicRuntimeConfig: {
+        // Will be available on both server and client
+        secret: process.env.SECRET // Pass through env variables
+    }
 };

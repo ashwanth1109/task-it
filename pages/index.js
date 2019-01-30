@@ -8,21 +8,45 @@ import color from "../styles/color";
 import withRedux from "../lib/redux/withRedux";
 import LabelInput from "../components/LabelInput";
 import Button from "../components/Button";
+import { loginUser } from "../lib/api/user";
+import { getSecretVariable } from "../utility";
 // ------------------------------------------------------------
 // index page stateless component
 // ------------------------------------------------------------
 class Index extends React.Component {
+    // ------------------------------------------------------------
     // component state => highlight
+    // ------------------------------------------------------------
     state = {
         highlight: false
     };
+    componentDidMount() {
+        console.log(process.env);
+    }
+    // ------------------------------------------------------------
     // function to highlight logo
+    // ------------------------------------------------------------
     highlightLogo = () => this.setState({ highlight: true });
+    // ------------------------------------------------------------
     // function to un-highlight logo
+    // ------------------------------------------------------------
     unHighlightLogo = () => this.setState({ highlight: false });
+    // ------------------------------------------------------------
     // navigate to sign up page
+    // ------------------------------------------------------------
     goToSignUp = () => console.log(`go to sign up page`);
+    // ------------------------------------------------------------
+    // sign in to app
+    // ------------------------------------------------------------
+    signIn = async () => {
+        const { username, password } = this.props.formRefs;
+        console.log(process.env);
+        const data = await loginUser(username.value, password.value);
+        console.log(data);
+    };
+    // ------------------------------------------------------------
     // render function
+    // ------------------------------------------------------------
     render({ highlight } = this.state) {
         return (
             <div style={s.container}>
@@ -45,7 +69,9 @@ class Index extends React.Component {
                         onFocus={this.highlightLogo}
                         onBlur={this.unHighlightLogo}
                     />
-                    <Button style={s.button}>Sign In</Button>
+                    <Button style={s.button} onClick={this.signIn}>
+                        Sign In
+                    </Button>
                     <div style={s.signUp}>
                         <div
                             style={{ cursor: "pointer" }}

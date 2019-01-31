@@ -116,22 +116,7 @@ export const addTask = {
         flex: 1
     },
     section1: {
-        borderTop: "1px solid #e0e0e0",
-        borderBottom: "1px solid #e0e0e0",
-        cursor: "pointer",
-        ...common.row,
-        ...common.alignCenter
-    },
-    logo: {
-        width: "50px",
-        height: "50px",
-        ...common.fCenter
-    },
-    addTask: {
-        ...font.royalLato,
-        fontSize: "20px",
-        lineHeight: "20px",
-        height: "20px"
+        cursor: "pointer"
     },
     add: {
         position: "absolute",
@@ -146,5 +131,50 @@ export const addTask = {
     },
     addIcon: {
         width: "20px"
+    }
+};
+// ------------------------------------------------------------
+// task component
+// ------------------------------------------------------------
+export const task = {
+    container: {
+        width: "100%",
+        height: "60px",
+        borderTop: "1px solid #e0e0e0",
+        borderBottom: "1px solid #e0e0e0",
+        ...common.row,
+        ...common.alignCenter
+    },
+    logo: {
+        width: "50px",
+        height: "50px",
+        ...common.fCenter
+    },
+    task: {
+        fontSize: "20px",
+        height: "25px",
+        flex: 1,
+        overflow: "hidden"
+    },
+    dateIncomplete: {
+        ...font.royalLato
+    },
+    dateComplete: {
+        ...font.lightGrayLato
+    },
+    incompleteTask: {
+        ...font.royalLato
+    },
+    completeTask: {
+        ...font.lightGrayLato,
+        textDecoration: "line-through"
+    }
+};
+// ------------------------------------------------------------
+// taskList component
+// ------------------------------------------------------------
+export const taskList = {
+    container: {
+        ...common.col
     }
 };

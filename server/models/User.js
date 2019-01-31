@@ -65,12 +65,22 @@ class UserClass {
             if (user) {
                 const isMatch = await bcrypt.compare(password, user.password);
                 if (isMatch) {
-                    return { user };
+                    return {
+                        loginSuccessful: true,
+                        user: {
+                            username: user.username,
+                            name: user.name,
+                            tasks: user.tasks
+                        }
+                    };
                 } else {
-                    return { error: "password doesn't match" };
+                    return {
+                        loginSuccessful: false,
+                        message: "password doesn't match"
+                    };
                 }
             } else {
-                return { error: "user not found" };
+                return { loginSuccessful: false, message: "user not found" };
             }
         } catch (err) {
             console.log(err);

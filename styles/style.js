@@ -17,12 +17,27 @@ export const common = {
         justifyContent: "center",
         alignItems: "center"
     },
+    justifyCenter: {
+        justifyContent: "center"
+    },
+    alignCenter: {
+        alignItems: "center"
+    },
     fCenter: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
     },
     mAuto: {
+        margin: "0 auto"
+    },
+    minHeightScreen: {
+        width: "100vw",
+        minHeight: "100vh"
+    },
+    container: {
+        maxWidth: "1000px",
+        width: "calc(100% - 100px)",
         margin: "0 auto"
     }
 };
@@ -33,5 +48,9 @@ export const font = {
     },
     white: {
         color: color.white
+    },
+    royalLato: {
+        fontFamily: "Lato, sans-serif",
+        color: color.royalBlue
     }
 };

@@ -9,10 +9,10 @@ import withRedux from "../lib/redux/withRedux";
 import LabelInput from "../components/LabelInput";
 import Button from "../components/Button";
 import { loginUser } from "../lib/api/user";
+import Router from "next/router";
 // ------------------------------------------------------------
-// index page stateless component
+// index page react class component
 // ------------------------------------------------------------
-
 class Index extends React.Component {
     // ------------------------------------------------------------
     // component state => highlight
@@ -39,7 +39,12 @@ class Index extends React.Component {
         const { username, password } = this.props.formRefs;
         console.log(process.env);
         const data = await loginUser(username.value, password.value);
-        console.log(data);
+        if (data.loginSuccessful) {
+            this.props.updateState("USER", data.user);
+            Router.push("/dashboard");
+        } else {
+            console.log(data);
+        }
     };
     // ------------------------------------------------------------
     // render function
@@ -48,9 +53,9 @@ class Index extends React.Component {
         return (
             <div style={s.container}>
                 <Logo
-                    background={highlight ? color.orange : color.white}
-                    check={highlight ? color.white : color.orange}
-                    animationTiming={1}
+                    background={highlight ? color.salmon : color.white}
+                    check={highlight ? color.white : color.salmon}
+                    animationTiming={0.5}
                 />
                 <Card style={s.cardContainer}>
                     <LabelInput
@@ -85,4 +90,4 @@ class Index extends React.Component {
 // ------------------------------------------------------------
 // export index
 // ------------------------------------------------------------
-export default withRedux(Index, true, false);
+export default withRedux(Index, true, true);

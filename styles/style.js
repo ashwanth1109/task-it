@@ -52,5 +52,9 @@ export const font = {
     royalLato: {
         fontFamily: "Lato, sans-serif",
         color: color.royalBlue
+    },
+    lightGrayLato: {
+        fontFamily: "Lato, sans-serif",
+        color: color.lightGray
     }
 };

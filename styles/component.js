@@ -11,7 +11,7 @@ export const index = {
         ...common.fScreen,
         ...common.col,
         ...common.center,
-        backgroundColor: color.cream
+        backgroundColor: color.royalBlue
     },
     cardContainer: {
         margin: "50px 0",
@@ -23,8 +23,36 @@ export const index = {
     signUp: {
         width: "100%",
         ...common.fCenter,
-        color: color.blue,
+        color: color.royalBlue,
         marginBottom: "20px"
+    }
+};
+// ------------------------------------------------------------
+// dashboard page
+// ------------------------------------------------------------
+export const dashboard = {
+    container: {
+        ...common.minHeightScreen,
+        backgroundColor: color.royalBlue,
+        paddingTop: "50px"
+    },
+    cardContainer: {
+        ...common.container,
+        padding: "30px 20px"
+    },
+    header: {
+        ...common.row,
+        ...font.Lato
+    },
+    title: {
+        flex: 1,
+        fontSize: "30px",
+        color: color.royalBlue
+    },
+    date: {
+        fontSize: "24px",
+        color: color.royalBlue,
+        ...common.fCenter
     }
 };
 // ------------------------------------------------------------

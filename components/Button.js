@@ -6,7 +6,7 @@ import { button } from "../styles/component";
 // Button component
 // ------------------------------------------------------------
 const Button = ({ children, style, onClick }) => (
-    <div style={{ ...style, ...button }} className="btn" onClick={onClick}>
+    <div style={{ ...style, ...button }} className="btn1" onClick={onClick}>
         {children}
     </div>
 );

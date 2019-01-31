@@ -8,7 +8,6 @@ const router = express.Router();
 // router permission gateway
 // ------------------------------------------------------------
 router.use((req, res, next) => {
-    console.log(req.body);
     if (req.body.secret !== process.env.SECRET) {
         res.status(401).json({
             error: "Unauthorized Access"

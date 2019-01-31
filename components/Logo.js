@@ -2,10 +2,18 @@
 // import dependencies
 // ------------------------------------------------------------
 import PropTypes from "prop-types";
+import color from "../styles/color";
 // ------------------------------------------------------------
 // Logo Stateless SVG Component
 // ------------------------------------------------------------
-const Logo = ({ width, height, background, check, animationTiming }) => {
+const Logo = ({
+    width,
+    height,
+    background,
+    check,
+    animationTiming,
+    outline
+}) => {
     return (
         <svg
             width={width}
@@ -30,7 +38,7 @@ const Logo = ({ width, height, background, check, animationTiming }) => {
                     >
                         <circle
                             id="Oval"
-                            stroke="#00171F"
+                            stroke={outline}
                             strokeWidth="10"
                             fill={background}
                             cx="214"
@@ -63,7 +71,8 @@ Logo.propTypes = {
     height: PropTypes.number,
     background: PropTypes.string,
     check: PropTypes.string,
-    animationTiming: PropTypes.number
+    animationTiming: PropTypes.number,
+    outline: PropTypes.string
 };
 // ------------------------------------------------------------
 // default props
@@ -71,9 +80,10 @@ Logo.propTypes = {
 Logo.defaultProps = {
     width: 120,
     height: 120,
-    background: "#F6511D",
-    check: "#FFFFFF",
-    animationTiming: 2
+    background: color.white,
+    check: color.salmon,
+    animationTiming: 2,
+    outline: color.salmon
 };
 // ------------------------------------------------------------
 // export Logo

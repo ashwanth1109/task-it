@@ -101,3 +101,50 @@ export const button = {
     cursor: "pointer",
     transition: "0.3s ease-in-out background-color"
 };
+// ------------------------------------------------------------
+// addTask component
+// ------------------------------------------------------------
+export const addTask = {
+    container: {
+        width: "100%",
+        height: "100px",
+        marginTop: "20px",
+        ...common.col,
+        position: "relative"
+    },
+    section: {
+        flex: 1
+    },
+    section1: {
+        borderTop: "1px solid #e0e0e0",
+        borderBottom: "1px solid #e0e0e0",
+        cursor: "pointer",
+        ...common.row,
+        ...common.alignCenter
+    },
+    logo: {
+        width: "50px",
+        height: "50px",
+        ...common.fCenter
+    },
+    addTask: {
+        ...font.royalLato,
+        fontSize: "20px",
+        lineHeight: "20px",
+        height: "20px"
+    },
+    add: {
+        position: "absolute",
+        width: "80px",
+        height: "80px",
+        borderRadius: "40px",
+        ...common.fCenter,
+        right: "20px",
+        top: "10px",
+        cursor: "pointer",
+        transition: "0.3s ease-in-out background-color"
+    },
+    addIcon: {
+        width: "20px"
+    }
+};

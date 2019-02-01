@@ -62,6 +62,16 @@ class TaskClass {
             console.log(err);
         }
     }
+    // ------------------------------------------------------------
+    // static method to update description and date
+    // ------------------------------------------------------------
+    static async updateTaskDescAndDate({ taskId, description, date }) {
+        try {
+            return await this.findByIdAndUpdate(taskId, { description, date });
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 // ------------------------------------------------------------
 // load class properties into schema

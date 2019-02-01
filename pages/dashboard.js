@@ -14,34 +14,34 @@ import TaskList from "../components/TaskList";
 class Dashboard extends React.Component {
     componentDidMount({ user, updateState } = this.props) {
         if (user === null) {
-            // Router.push("/");
-            updateState("USER", {
-                name: "Test User",
-                tasks: [
-                    {
-                        description: "Complete wireframes for Task It",
-                        date: "January 31, 2019",
-                        checked: true
-                    },
-                    {
-                        description: "Complete designs for Task It",
-                        date: "January 31, 2019",
-                        checked: true
-                    },
-                    {
-                        description: "Complete frontend for Task It",
-                        date: "January 31, 2019",
-                        checked: false
-                    },
-                    {
-                        description:
-                            "This is a super long task and it should get cut off by the overflow property. This is a super long task and it should get cut off by the overflow property.",
-                        date: "January 31, 2019",
-                        checked: false
-                    }
-                ],
-                username: "test"
-            });
+            Router.push("/");
+            // updateState("USER", {
+            //     name: "Test User",
+            //     "tasks": [
+            //         {
+            //             "description": "Complete wireframes for Task It",
+            //             "date": "January 31, 2019",
+            //             "checked": true
+            //         },
+            //         {
+            //             "description": "Complete designs for Task It",
+            //             "date": "January 31, 2019",
+            //             "checked": true
+            //         },
+            //         {
+            //             "description": "Complete frontend for Task It",
+            //             "date": "January 31, 2019",
+            //             "checked": false
+            //         },
+            //         {
+            //             "description":
+            //                 "This is a super long task and it should get cut off by the overflow property. This is a super long task and it should get cut off by the overflow property.",
+            //             "date": "January 31, 2019",
+            //             "checked": false
+            //         }
+            //     ],
+            //     username: "test"
+            // });
         }
     }
     render({ user } = this.props) {

@@ -52,6 +52,16 @@ class TaskClass {
             console.log(err);
         }
     }
+    // ------------------------------------------------------------
+    // static method to delete task by id
+    // ------------------------------------------------------------
+    static async deleteTask(taskId) {
+        try {
+            return await this.findByIdAndRemove({ _id: taskId });
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 // ------------------------------------------------------------
 // load class properties into schema

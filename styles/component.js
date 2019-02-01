@@ -38,8 +38,10 @@ export const dashboard = {
     },
     cardContainer: {
         ...common.container,
-        padding: "20px",
-        marginBottom: "50px"
+        padding: "20px"
+    },
+    spacer: {
+        height: "50px"
     },
     header: {
         ...common.row,
@@ -113,11 +115,18 @@ export const addTask = {
         ...common.col,
         position: "relative"
     },
-    section: {
-        flex: 1
+    taskHeader: {
+        width: "100%",
+        height: "60px",
+        borderTop: "1px solid #e0e0e0",
+        borderBottom: "1px solid #e0e0e0",
+        ...common.row,
+        ...common.alignCenter
     },
-    section1: {
-        cursor: "pointer"
+    logo: {
+        width: "50px",
+        height: "50px",
+        ...common.fCenter
     },
     add: {
         position: "absolute",
@@ -179,7 +188,8 @@ export const textInputOrField = {
         fontSize: "20px",
         height: "25px",
         flex: 1,
-        overflow: "hidden"
+        overflow: "hidden",
+        cursor: "pointer"
     },
     incompleteTask: {
         ...font.royalLato

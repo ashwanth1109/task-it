@@ -2,13 +2,18 @@
 // import dependencies
 // ------------------------------------------------------------
 import PropTypes from "prop-types";
-import moment from "moment";
 import Logo from "./Logo";
 import color from "../styles/color";
 import { task as s } from "../styles/component";
 import TextField from "./TextField";
 import TextInput from "./TextInput";
+import {
+    deleteTask,
+    updateTaskDescAndDate,
+    updateTaskCheckState
+} from "../lib/api/task";
 import withRedux from "../lib/redux/withRedux";
+import moment from "moment";
 // ------------------------------------------------------------
 // Task component
 // ------------------------------------------------------------
@@ -17,8 +22,27 @@ class Task extends React.Component {
         isTextField: true
     };
 
-    alternateTextAndInput = () =>
-        this.setState({ isTextField: !this.state.isTextField });
+    switchToText = async text => {
+        this.setState({ isTextField: true });
+        if (text !== this.props.description) {
+            const { user, id, updateState } = this.props;
+            const { tasks } = user;
+            const date = moment().format("LL");
+            // ------------------------------------------------------------
+            // update change in description and date in redux state & in db
+            // ------------------------------------------------------------
+            for (const task of tasks) {
+                if (task._id === id) {
+                    task.description = text;
+                    task.date = date;
+                    break;
+                }
+            }
+            user.tasks = tasks;
+            updateState("USER", Object.assign({}, user));
+            await updateTaskDescAndDate(id, text, date);
+        }
+    };
 
         }
     render() {

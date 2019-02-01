@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
+const Task = require("../models/Task");
 // ------------------------------------------------------------
 // get express router
 // ------------------------------------------------------------
@@ -36,6 +37,17 @@ router.post("/delete", async (req, res) => {
     try {
         const user = await User.deleteTask(req.body); // req.body => user, id
         res.json(user);
+    } catch (err) {
+        res.json(err);
+    }
+});
+// ------------------------------------------------------------
+// router POST /api/task/updateTaskDescAndDate
+// ------------------------------------------------------------
+router.post("/updateTaskDescAndDate", async (req, res) => {
+    try {
+        const updateStatus = await Task.updateTaskDescAndDate(req.body); // req.body => taskId, description, date
+        res.json(updateStatus);
     } catch (err) {
         res.json(err);
     }

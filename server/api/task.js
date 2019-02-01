@@ -52,6 +52,18 @@ router.post("/updateTaskDescAndDate", async (req, res) => {
         res.json(err);
     }
 });
+// ------------------------------------------------------------
+// router POST /api/task/updateTaskCheckState
+// ------------------------------------------------------------
+router.post("/updateTaskCheckState", async (req, res) => {
+    try {
+        const updateStatus = await Task.updateTaskCheckState(req.body); // req.body => taskId, checkState
+        res.json(updateStatus);
+    } catch (err) {
+        res.json(err);
+    }
+});
+// ------------------------------------------------------------
 // export router
 // ------------------------------------------------------------
 module.exports = router;

@@ -57,9 +57,11 @@ class Dashboard extends React.Component {
                         </div>
                         <AddTask />
                     </Card>
-                    <Card style={{ ...s.cardContainer, marginTop: "50px" }}>
+                    <div style={s.spacer} />
+                    <Card style={s.cardContainer}>
                         <TaskList />
                     </Card>
+                    <div style={s.spacer} />
                 </div>
             );
         }

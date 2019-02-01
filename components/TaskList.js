@@ -14,6 +14,7 @@ const TaskList = ({ user }) => {
             {tasks.map((task, id) => (
                 <Task
                     key={id}
+                    id={id}
                     checked={task.checked}
                     description={task.description}
                     date={task.date}

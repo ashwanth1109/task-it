@@ -4,6 +4,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcryptjs");
+const Task = require("./Task");
 // ------------------------------------------------------------
 // user schema for db entry
 // ------------------------------------------------------------
@@ -50,7 +51,8 @@ class UserClass {
             return this.create({
                 username,
                 password: hashedPassword,
-                name
+                name,
+                tasks: []
             });
         } catch (err) {
             console.log(err);
@@ -63,14 +65,16 @@ class UserClass {
         try {
             const user = await this.findOne({ username });
             if (user) {
+                console.log(user);
                 const isMatch = await bcrypt.compare(password, user.password);
                 if (isMatch) {
+                    const tasks = await Task.fetchTasks(user.tasks);
                     return {
                         loginSuccessful: true,
                         user: {
                             username: user.username,
                             name: user.name,
-                            tasks: user.tasks
+                            tasks: tasks
                         }
                     };
                 } else {
@@ -82,6 +86,22 @@ class UserClass {
             } else {
                 return { loginSuccessful: false, message: "user not found" };
             }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    // ------------------------------------------------------------
+    // static method to add a new task to a user
+    // ------------------------------------------------------------
+    static async addTaskToUser({ user, description }) {
+        try {
+            const task = await Task.addTask(description);
+            user.tasks.push(task._id);
+            await User.update(
+                { username: user.username },
+                { $set: { tasks: user.tasks } }
+            );
+            return task;
         } catch (err) {
             console.log(err);
         }

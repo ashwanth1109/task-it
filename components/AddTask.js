@@ -4,12 +4,15 @@
 import { addTask as s } from "../styles/component";
 import withRedux from "../lib/redux/withRedux";
 import Task from "./Task";
+import { addTaskToUser } from "../lib/api/task";
 // ------------------------------------------------------------
 // AddTask component
 // ------------------------------------------------------------
 class AddTask extends React.Component {
-    addTask = () => {
-        console.log("add task to tasks array");
+    addTask = async () => {
+        const { user, addToDo, updateState } = this.props;
+        user.tasks.push(await addTaskToUser(user, addToDo));
+        updateState("USER", user);
     };
     render() {
         return (
@@ -30,4 +33,4 @@ class AddTask extends React.Component {
 // ------------------------------------------------------------
 // export AddTask
 // ------------------------------------------------------------
-export default withRedux(AddTask, false, true);
+export default withRedux(AddTask, true, true);

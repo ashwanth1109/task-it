@@ -17,6 +17,10 @@ const taskSchema = Schema({
         required: true
     },
     date: {
+        type: String,
+        required: true
+    },
+    createdOn: {
         type: Date,
         default: Date.now
     }
@@ -55,5 +59,5 @@ taskSchema.loadClass(TaskClass);
 // ------------------------------------------------------------
 // create task mongoose model and export it
 // ------------------------------------------------------------
-const Task = mongoose.model("Tasks", taskSchema);
+const Task = mongoose.model("tasks", taskSchema);
 module.exports = Task;

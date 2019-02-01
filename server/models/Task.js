@@ -32,9 +32,10 @@ class TaskClass {
     // ------------------------------------------------------------
     // static method to create a new task
     // ------------------------------------------------------------
-    static async addTask(description) {
+    static async addTask(description, date) {
         try {
-            const task = await this.create({ description });
+            const task = await this.create({ description, date });
+            console.log(`=================PRINTING IN TASK MODEL`);
             console.log(task);
             return task;
         } catch (err) {

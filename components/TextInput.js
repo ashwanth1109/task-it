@@ -7,20 +7,13 @@ import { textInputOrField as s } from "../styles/component";
 // TextInput component
 // ------------------------------------------------------------
 class TextInput extends React.Component {
-    updateValueAndBlur = () => {
-        this.props.updateState("ADD_TODO", this.refs.addToDo.value);
-        this.props.onBlur();
-        setTimeout(() => {
-            this.props.updateState("ADD_TODO", "");
-        }, 500);
-    };
     render({ description } = this.props) {
         return (
             <input
                 style={{ ...s.task, ...s.incompleteTask, ...s.textInput }}
                 type="text"
-                onBlur={this.updateValueAndBlur}
-                ref="addToDo"
+                onBlur={() => this.props.onBlur(this.refs.newToDo.value)}
+                ref="newToDo"
                 defaultValue={description}
                 autoFocus
             />

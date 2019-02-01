@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="120px" viewBox="0 0 94 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>rubbish-bin-delete-button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-504.000000, -36.000000)" fill-rule="nonzero" fill="#F27475">
+            <g id="rubbish-bin-delete-button" transform="translate(504.000000, 36.000000)">
+                <path d="M6.66060055,106.666667 C6.66060055,114 12.655141,120 19.9818016,120 L73.266606,120 C80.5932666,120 86.5878071,114 86.5878071,106.666667 L86.5878071,26.6666667 L6.66060055,26.6666667 L6.66060055,106.666667 Z M93.2484076,6.66666667 L69.9363057,6.66666667 L63.2757052,0 L29.9727025,0 L23.3121019,6.66666667 L0,6.66666667 L0,20 L93.2484076,20 L93.2484076,6.66666667 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -20,9 +20,10 @@ router.use((req, res, next) => {
 // router POST /api/task/add
 // ------------------------------------------------------------
 router.post("/add", async (req, res) => {
-    console.log("hitting add route");
     try {
-        const task = await User.addTaskToUser(req.body);
+        const task = await User.addTaskToUser(req.body); // user, description, date
+        console.log(`=================PRINTING IN ROUTE`);
+        console.log(task);
         res.json(task);
     } catch (err) {
         res.json(err);

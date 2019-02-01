@@ -72,6 +72,16 @@ class TaskClass {
             console.log(err);
         }
     }
+    // ------------------------------------------------------------
+    // static method to update check state
+    // ------------------------------------------------------------
+    static async updateTaskCheckState({ taskId, checked }) {
+        try {
+            return await this.findByIdAndUpdate(taskId, { checked });
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 // ------------------------------------------------------------
 // load class properties into schema

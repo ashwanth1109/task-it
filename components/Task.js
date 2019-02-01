@@ -8,6 +8,7 @@ import color from "../styles/color";
 import { task as s } from "../styles/component";
 import TextField from "./TextField";
 import TextInput from "./TextInput";
+import withRedux from "../lib/redux/withRedux";
 // ------------------------------------------------------------
 // Task component
 // ------------------------------------------------------------
@@ -19,60 +20,50 @@ class Task extends React.Component {
     alternateTextAndInput = () =>
         this.setState({ isTextField: !this.state.isTextField });
 
-    render(
-        { checked, description, date, style } = this.props,
-        { isTextField } = this.state
-    ) {
-        let background,
-            check,
-            outline,
-            addTask = false;
-        const { salmon, white, royalBlue } = color;
-        if (checked === true) {
-            [background, check, outline] = [salmon, white, salmon];
-        } else if (checked === false) {
-            [background, check, outline] = [white, salmon, salmon];
-        } else {
-            [background, check, outline] = [royalBlue, white, royalBlue];
-            addTask = true;
         }
+    render() {
+        const { checked, description, date, style } = this.props;
+        const { isTextField } = this.state;
+        const { salmon, white, black } = color;
         return (
             <div
                 style={{
                     ...s.container,
-                    ...style,
-                    cursor: "pointer"
+                    ...style
                 }}
             >
                 <div style={s.logo}>
                     <Logo
                         width={30}
                         height={30}
-                        background={background}
-                        check={check}
-                        outline={outline}
+                        background={checked ? salmon : white}
+                        check={checked ? white : black}
+                        outline={checked ? salmon : black}
+                        onClick={this.toggleTaskStatus}
+                        animationTiming={0.3}
                     />
                 </div>
                 {isTextField ? (
                     <TextField
                         checked={checked}
                         description={description}
-                        onClick={this.alternateTextAndInput}
+                        onClick={() => this.setState({ isTextField: false })}
                     />
                 ) : (
                     <TextInput
-                        onBlur={this.alternateTextAndInput}
-                        description={!addTask ? description : ""}
+                        onBlur={text => this.switchToText(text)}
+                        description={description}
                     />
                 )}
-                {date ? (
-                    <div style={checked ? s.dateComplete : s.dateIncomplete}>
-                        {moment(date).format("LL")}
-                    </div>
-                ) : null}
-                {!addTask ? (
-                    <img src="/static/delete.svg" style={s.delete} />
-                ) : null}
+                <div style={checked ? s.dateComplete : s.dateIncomplete}>
+                    {date}
+                </div>
+
+                <img
+                    src="/static/delete.svg"
+                    style={s.delete}
+                    onClick={this.deleteTask}
+                />
             </div>
         );
     }
@@ -88,4 +79,4 @@ Task.propTypes = {
 // ------------------------------------------------------------
 // export Task
 // ------------------------------------------------------------
-export default Task;
+export default withRedux(Task, true, true);

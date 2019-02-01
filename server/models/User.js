@@ -93,11 +93,21 @@ class UserClass {
     // ------------------------------------------------------------
     // static method to add a new task to a user
     // ------------------------------------------------------------
-    static async addTaskToUser({ user, description }) {
+    static async addTaskToUser({ user, description, date }) {
         try {
-            const task = await Task.addTask(description);
-            user.tasks.push(task._id);
-            await User.update(
+            const task = await Task.addTask(description, date);
+            console.log(`=================PRINTING IN USER MODEL`);
+            console.log(task);
+            const { username } = user;
+            await User.updateOne(
+                { username: username },
+                { $push: { tasks: task._id } }
+            );
+            return task;
+        } catch (err) {
+            console.log(err);
+        }
+    }
                 { username: user.username },
                 { $set: { tasks: user.tasks } }
             );

@@ -27,9 +27,28 @@ class AddTask extends React.Component {
     };
 
     addTask = async () => {
-        const { user, addToDo, updateState } = this.props;
-        user.tasks.push(await addTaskToUser(user, addToDo));
-        updateState("USER", user);
+        const { user, updateState } = this.props;
+        const { textValue } = this.state;
+        if (textValue !== "") {
+            const date = moment().format("LL");
+            user.tasks.push({
+                description: textValue,
+                date,
+                checked: false
+            });
+            updateState("USER", Object.assign({}, user));
+            this.setState({ textValue: "" });
+            try {
+                console.log(user);
+                const task = await addTaskToUser(user, textValue, date);
+                user.tasks.pop();
+                user.tasks.push(task);
+                console.log(user);
+                updateState("USER", Object.assign({}, user));
+            } catch (err) {
+                console.log(err);
+            }
+        }
     };
     render() {
         const { isTextField } = this.state;

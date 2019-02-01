@@ -44,7 +44,21 @@ class Task extends React.Component {
         }
     };
 
+    deleteTask = async () => {
+        const { user, id, updateState } = this.props;
+        const { tasks } = user;
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i]._id === id) {
+                console.log("finding a match");
+                tasks.splice(i, 1);
+                break;
+            }
         }
+        user.tasks = tasks;
+        updateState("USER", Object.assign({}, user));
+        await deleteTask(user, id);
+    };
+
     render() {
         const { checked, description, date, style } = this.props;
         const { isTextField } = this.state;

@@ -12,7 +12,8 @@ const Logo = ({
     background,
     check,
     animationTiming,
-    outline
+    outline,
+    onClick
 }) => {
     return (
         <svg
@@ -21,6 +22,8 @@ const Logo = ({
             viewBox="0 0 438 438"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: onClick ? "pointer" : null }}
+            onClick={onClick ? onClick : null}
         >
             <title>Logo - Task it</title>
             <defs />

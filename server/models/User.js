@@ -108,10 +108,22 @@ class UserClass {
             console.log(err);
         }
     }
+    // ------------------------------------------------------------
+    // static method to delete task
+    // ------------------------------------------------------------
+    static async deleteTask({ user, taskId }) {
+        try {
+            for (let i = 0; i < user.tasks.length; i++) {
+                if (user.tasks[i]._id === taskId) {
+                    user.tasks.splice(i, 1);
+                }
+            }
+            await Task.deleteTask(taskId);
+            await this.updateOne(
                 { username: user.username },
                 { $set: { tasks: user.tasks } }
             );
-            return task;
+            return true;
         } catch (err) {
             console.log(err);
         }

@@ -59,6 +59,22 @@ class Task extends React.Component {
         await deleteTask(user, id);
     };
 
+    toggleTaskStatus = async () => {
+        const { user, id, updateState } = this.props;
+        const { tasks } = user;
+        let newChecked;
+        for (const task of tasks) {
+            if (task._id === id) {
+                newChecked = !task.checked;
+                task.checked = newChecked;
+                break;
+            }
+        }
+        user.tasks = tasks;
+        updateState("USER", Object.assign({}, user));
+        await updateTaskCheckState(id, newChecked);
+    };
+
     render() {
         const { checked, description, date, style } = this.props;
         const { isTextField } = this.state;

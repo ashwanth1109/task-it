@@ -30,6 +30,16 @@ router.post("/add", async (req, res) => {
     }
 });
 // ------------------------------------------------------------
+// router POST /api/task/delete
+// ------------------------------------------------------------
+router.post("/delete", async (req, res) => {
+    try {
+        const user = await User.deleteTask(req.body); // req.body => user, id
+        res.json(user);
+    } catch (err) {
+        res.json(err);
+    }
+});
 // export router
 // ------------------------------------------------------------
 module.exports = router;

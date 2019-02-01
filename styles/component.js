@@ -38,7 +38,8 @@ export const dashboard = {
     },
     cardContainer: {
         ...common.container,
-        padding: "30px 20px"
+        padding: "20px",
+        marginBottom: "50px"
     },
     header: {
         ...common.row,
@@ -150,24 +151,16 @@ export const task = {
         height: "50px",
         ...common.fCenter
     },
-    task: {
-        fontSize: "20px",
-        height: "25px",
-        flex: 1,
-        overflow: "hidden"
-    },
     dateIncomplete: {
         ...font.royalLato
     },
     dateComplete: {
         ...font.lightGrayLato
     },
-    incompleteTask: {
-        ...font.royalLato
-    },
-    completeTask: {
-        ...font.lightGrayLato,
-        textDecoration: "line-through"
+    delete: {
+        height: "30px",
+        marginLeft: "20px",
+        cursor: "pointer"
     }
 };
 // ------------------------------------------------------------
@@ -176,5 +169,26 @@ export const task = {
 export const taskList = {
     container: {
         ...common.col
+    }
+};
+// ------------------------------------------------------------
+// textField or textInput component
+// ------------------------------------------------------------
+export const textInputOrField = {
+    task: {
+        fontSize: "20px",
+        height: "25px",
+        flex: 1,
+        overflow: "hidden"
+    },
+    incompleteTask: {
+        ...font.royalLato
+    },
+    completeTask: {
+        ...font.lightGrayLato,
+        textDecoration: "line-through"
+    },
+    textInput: {
+        border: "0px"
     }
 };

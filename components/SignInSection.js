@@ -1,7 +1,13 @@
+// ------------------------------------------------------------
+// import dependencies
+// ------------------------------------------------------------
+import { loginSignUpSection as s } from "../styles/component"; // component styles
+// ------------------------------------------------------------
+// import components
+// ------------------------------------------------------------
 import Card from "./Card";
 import LabelInput from "./LabelInput";
 import Button from "./Button";
-import { loginSignUpSection as s } from "../styles/component";
 // ------------------------------------------------------------
 // LoginSection
 // ------------------------------------------------------------
@@ -13,7 +19,9 @@ const LoginSection = ({
     showLogin
 }) => (
     <div style={{ ...s.section, left: showLogin ? "0px" : "-100vw" }}>
+        {/* LOGIN CARD */}
         <Card style={s.cardContainer}>
+            {/* USERNAME INPUT */}
             <LabelInput
                 icon="/static/username.svg"
                 title="username"
@@ -21,6 +29,7 @@ const LoginSection = ({
                 onBlur={unHighlightLogo}
                 loginForm
             />
+            {/* PASSWORD INPUT */}
             <LabelInput
                 icon="/static/password.svg"
                 title="password"
@@ -29,9 +38,11 @@ const LoginSection = ({
                 onBlur={unHighlightLogo}
                 loginForm
             />
+            {/* SIGN IN BUTTON */}
             <Button style={s.button} onClick={signIn}>
                 Sign In
             </Button>
+            {/* SIGN UP TEXT */}
             <div style={s.signUpText}>
                 <div style={{ cursor: "pointer" }} onClick={goToSignUp}>
                     Dont have an account? Create one

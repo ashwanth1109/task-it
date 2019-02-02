@@ -34,10 +34,7 @@ class TaskClass {
     // ------------------------------------------------------------
     static async addTask(description, date) {
         try {
-            const task = await this.create({ description, date });
-            console.log(`=================PRINTING IN TASK MODEL`);
-            console.log(task);
-            return task;
+            return await this.create({ description, date }); // create and return task
         } catch (err) {
             console.log(err);
         }
@@ -47,7 +44,7 @@ class TaskClass {
     // ------------------------------------------------------------
     static async fetchTasks(taskIds) {
         try {
-            return await this.find({ _id: { $in: taskIds } });
+            return await this.find({ _id: { $in: taskIds } }); // find and return all tasks
         } catch (err) {
             console.log(err);
         }
@@ -57,7 +54,7 @@ class TaskClass {
     // ------------------------------------------------------------
     static async deleteTask(taskId) {
         try {
-            return await this.findByIdAndRemove({ _id: taskId });
+            await this.findByIdAndRemove({ _id: taskId }); // find and delete task
         } catch (err) {
             console.log(err);
         }

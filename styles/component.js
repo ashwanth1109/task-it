@@ -13,18 +13,11 @@ export const index = {
         ...common.center,
         backgroundColor: color.royalBlue
     },
-    cardContainer: {
-        margin: "50px 0",
-        ...font.Lato
-    },
-    button: {
-        margin: "20px auto"
-    },
-    signUp: {
-        width: "100%",
-        ...common.fCenter,
-        color: color.royalBlue,
-        marginBottom: "20px"
+    sections: {
+        width: "100vw",
+        height: "400px",
+        overflow: "hidden",
+        position: "relative"
     }
 };
 // ------------------------------------------------------------
@@ -200,5 +193,36 @@ export const textInputOrField = {
     },
     textInput: {
         border: "0px"
+    }
+};
+// ------------------------------------------------------------
+// loginSection component
+// ------------------------------------------------------------
+export const loginSignUpSection = {
+    section: {
+        width: "100vw",
+        height: "100%",
+        ...common.fCenter,
+        position: "absolute",
+        transition: "1s ease-in-out left"
+    },
+    cardContainer: {
+        margin: "50px 0",
+        ...font.Lato
+    },
+    button: {
+        margin: "20px auto"
+    },
+    signUpText: {
+        width: "100%",
+        ...common.fCenter,
+        color: color.royalBlue,
+        marginBottom: "20px"
+    },
+    signUp: {
+        left: "300px"
+    },
+    login: {
+        left: "0px"
     }
 };

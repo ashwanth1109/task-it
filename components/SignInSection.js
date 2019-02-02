@@ -9,9 +9,9 @@ import Card from "./Card";
 import LabelInput from "./LabelInput";
 import Button from "./Button";
 // ------------------------------------------------------------
-// LoginSection
+// SignInSection
 // ------------------------------------------------------------
-const LoginSection = ({
+const SignInSection = ({
     highlightLogo,
     unHighlightLogo,
     signIn,
@@ -52,6 +52,6 @@ const LoginSection = ({
     </div>
 );
 // ------------------------------------------------------------
-// export LoginSection
+// export SignInSection
 // ------------------------------------------------------------
-export default LoginSection;
+export default SignInSection;

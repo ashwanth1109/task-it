@@ -1,8 +1,15 @@
-import { textInputOrField as s } from "../styles/component";
 // ------------------------------------------------------------
-// TextField component
+// import dependencies
+// ------------------------------------------------------------
+import { textInputOrField as s } from "../styles/component"; // component styles
+import PropTypes from "prop-types"; // prop type validation
+// ------------------------------------------------------------
+// TextField stateless component
 // ------------------------------------------------------------
 const TextField = ({ checked, description, onClick }) => {
+    // ------------------------------------------------------------
+    // display the task description
+    // ------------------------------------------------------------
     return (
         <div
             style={{
@@ -14,6 +21,21 @@ const TextField = ({ checked, description, onClick }) => {
             {description}
         </div>
     );
+};
+// ------------------------------------------------------------
+// prop type validation
+// ------------------------------------------------------------
+TextField.propTypes = {
+    checked: PropTypes.bool,
+    description: PropTypes.string.isRequired,
+    onClick: PropTypes.func
+};
+// ------------------------------------------------------------
+// default props
+// ------------------------------------------------------------
+TextField.defaultProps = {
+    description: "",
+    onClick: () => null
 };
 // ------------------------------------------------------------
 // export TextField

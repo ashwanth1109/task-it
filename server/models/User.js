@@ -69,7 +69,6 @@ class UserClass {
         try {
             const user = await this.findOne({ username });
             if (user) {
-                console.log(user);
                 const isMatch = await bcrypt.compare(password, user.password);
                 if (isMatch) {
                     const tasks = await Task.fetchTasks(user.tasks);
@@ -100,8 +99,6 @@ class UserClass {
     static async addTaskToUser({ user, description, date }) {
         try {
             const task = await Task.addTask(description, date);
-            console.log(`=================PRINTING IN USER MODEL`);
-            console.log(task);
             const { username } = user;
             await User.updateOne(
                 { username: username },
@@ -127,7 +124,6 @@ class UserClass {
                 { username: user.username },
                 { $set: { tasks: user.tasks } }
             );
-            return true;
         } catch (err) {
             console.log(err);
         }

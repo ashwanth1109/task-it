@@ -2,6 +2,7 @@
 // import depedencies
 // ------------------------------------------------------------
 import { loginSignUpSection as s } from "../styles/component"; // component styles
+import PropTypes from "prop-types"; // prop type validation
 // ------------------------------------------------------------
 // import components
 // ------------------------------------------------------------
@@ -56,6 +57,16 @@ const SignUpSection = ({
         </Card>
     </div>
 );
+// ------------------------------------------------------------
+// prop type validation
+// ------------------------------------------------------------
+SignUpSection.propTypes = {
+    highlightLogo: PropTypes.func.isRequired,
+    unHighlightLogo: PropTypes.func.isRequired,
+    signUp: PropTypes.func.isRequired,
+    goToSignIn: PropTypes.func.isRequired,
+    showLogin: PropTypes.bool.isRequired
+};
 // ------------------------------------------------------------
 // export SignUpSection
 // ------------------------------------------------------------

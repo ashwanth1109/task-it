@@ -14,6 +14,9 @@ router.use((req, res, next) => {
         });
         return;
     }
+    // ------------------------------------------------------------
+    // if api access is authorized, expose the routes
+    // ------------------------------------------------------------
     next();
 });
 // ------------------------------------------------------------
@@ -21,6 +24,9 @@ router.use((req, res, next) => {
 // ------------------------------------------------------------
 router.post("/register", async (req, res) => {
     try {
+        // ------------------------------------------------------------
+        // use USER static method to register a new user to db
+        // ------------------------------------------------------------
         const registerStatus = await User.register(req.body); // req.body => username, password, name
         res.json(registerStatus);
     } catch (err) {
@@ -32,6 +38,9 @@ router.post("/register", async (req, res) => {
 // ------------------------------------------------------------
 router.post("/login", async (req, res) => {
     try {
+        // ------------------------------------------------------------
+        // use USER static method to login a new user to db
+        // ------------------------------------------------------------
         const loginStatus = await User.login(req.body); // req.body => username, password
         res.json(loginStatus);
     } catch (err) {

@@ -1,82 +1,159 @@
 // ------------------------------------------------------------
 // import dependencies
 // ------------------------------------------------------------
-import { addTask as s } from "../styles/component";
-import withRedux from "../lib/redux/withRedux";
-import { addTaskToUser } from "../lib/api/task";
-import color from "../styles/color";
+import { addTask as s } from "../styles/component"; // component styles
+import color from "../styles/color"; // color palette
+import withRedux from "../lib/redux/withRedux"; // Redux HOC
+import { addTaskToUser } from "../lib/api/task"; // async api method
+import moment from "moment"; // moment js for parsing dates
+// ------------------------------------------------------------
+// import components
+// ------------------------------------------------------------
 import TextField from "./TextField";
 import TextInput from "./TextInput";
 import Logo from "./Logo";
-import moment from "moment";
+// ------------------------------------------------------------
+// Logo Icon stateless component
+// ------------------------------------------------------------
+const LogoIcon = () => (
+    <div style={s.logo}>
+        <Logo
+            width={30}
+            height={30}
+            background={color.royalBlue}
+            check={color.white}
+            outline={color.royalBlue}
+        />
+    </div>
+);
+// ------------------------------------------------------------
+// Field Or Input stateless component
+// ------------------------------------------------------------
+const FieldOrInput = ({
+    isTextField,
+    textValue,
+    switchToInput,
+    switchToText
+}) => (
+    <React.Fragment>
+        {isTextField ? (
+            <TextField
+                checked={false}
+                description={textValue || "Add a task"}
+                onClick={switchToInput}
+            />
+        ) : (
+            <TextInput
+                onBlur={text => switchToText(text)}
+                description={textValue}
+            />
+        )}
+    </React.Fragment>
+);
 // ------------------------------------------------------------
 // AddTask component
 // ------------------------------------------------------------
 class AddTask extends React.Component {
+    // ------------------------------------------------------------
+    // component state
+    // isTextField => toggles between text field and text input
+    // textValue => track text value that is entered into input
+    // ------------------------------------------------------------
     state = {
         isTextField: true,
         textValue: ""
     };
-
-    switchToInput = () => {
-        this.setState({ isTextField: false });
-    };
-
-    switchToText = text => {
-        this.setState({ isTextField: true, textValue: text });
-    };
-
+    // ------------------------------------------------------------
+    // async method to add task to tasks array in redux store and db
+    // could instead use thunk or saga as well
+    // ------------------------------------------------------------
     addTask = async () => {
+        // ------------------------------------------------------------
+        // extracting props and state
+        // ------------------------------------------------------------
         const { user, updateState } = this.props;
         const { textValue } = this.state;
+        // ------------------------------------------------------------
+        // check if user has entered something into the input
+        // ------------------------------------------------------------
         if (textValue !== "") {
+            // ------------------------------------------------------------
+            // get current date in string format using moment js
+            // ------------------------------------------------------------
             const date = moment().format("LL");
+            // ------------------------------------------------------------
+            // push new task into user object (temporary) => not the actual task
+            // ------------------------------------------------------------
             user.tasks.push({
                 description: textValue,
                 date,
                 checked: false
             });
+            // ------------------------------------------------------------
+            // update state in redux store first => this is better for user experience
+            // downside to this approach is db updation fails we need to reflect error
+            // ------------------------------------------------------------
             updateState("USER", Object.assign({}, user));
+            // ------------------------------------------------------------
+            // reset text value in add task component as value has been extracted
+            // ------------------------------------------------------------
             this.setState({ textValue: "" });
             try {
-                console.log(user);
+                // ------------------------------------------------------------
+                // make api request to add task to user in db
+                // ------------------------------------------------------------
                 const task = await addTaskToUser(user, textValue, date);
-                user.tasks.pop();
-                user.tasks.push(task);
-                console.log(user);
+                // ------------------------------------------------------------
+                // once task has been added to db, we get task object with object id etc.
+                // ------------------------------------------------------------
+                user.tasks.pop(); // so pop temporary task out
+                user.tasks.push(task); // push new task object in
+                // ------------------------------------------------------------
+                // update this change in user to redux state
+                // ------------------------------------------------------------
                 updateState("USER", Object.assign({}, user));
             } catch (err) {
                 console.log(err);
             }
         }
     };
+    // ------------------------------------------------------------
+    // method to switch to input
+    // ------------------------------------------------------------
+    switchToInput = () => this.setState({ isTextField: false });
+    // ------------------------------------------------------------
+    // method to switch to text
+    // ------------------------------------------------------------
+    switchToText = text =>
+        this.setState({ isTextField: true, textValue: text });
+    // ------------------------------------------------------------
+    // render method
+    // ------------------------------------------------------------
     render() {
-        const { isTextField } = this.state;
+        // ------------------------------------------------------------
+        // extract state variables
+        // ------------------------------------------------------------
+        const { isTextField, textValue } = this.state;
+        // ------------------------------------------------------------
+        // construct field or input props
+        // ------------------------------------------------------------
+        const fieldOrInputProps = {
+            isTextField,
+            textValue,
+            switchToInput: this.switchToInput,
+            switchToText: this.switchToText
+        };
+        // ------------------------------------------------------------
+        // return component
+        // ------------------------------------------------------------
         return (
             <div style={s.container}>
+                {/* ADD A TASK DIV */}
                 <div style={s.taskHeader}>
-                    <div style={s.logo}>
-                        <Logo
-                            width={30}
-                            height={30}
-                            background={color.royalBlue}
-                            check={color.white}
-                            outline={color.royalBlue}
-                        />
-                    </div>
-                    {isTextField ? (
-                        <TextField
-                            checked={false}
-                            description={this.state.textValue || "Add a task"}
-                            onClick={this.switchToInput}
-                        />
-                    ) : (
-                        <TextInput
-                            onBlur={text => this.switchToText(text)}
-                            description={this.state.textValue}
-                        />
-                    )}
+                    <LogoIcon />
+                    <FieldOrInput {...fieldOrInputProps} />
                 </div>
+                {/* ADD BUTTON */}
                 <div style={s.add} onClick={this.addTask} className="btn2">
                     <img
                         src="/static/add.svg"
@@ -89,6 +166,6 @@ class AddTask extends React.Component {
     }
 }
 // ------------------------------------------------------------
-// export AddTask
+// export AddTask withRedux => mapState and mapDispatch
 // ------------------------------------------------------------
 export default withRedux(AddTask, true, true);

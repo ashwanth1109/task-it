@@ -8,9 +8,16 @@ import withRedux from "../lib/redux/withRedux";
 // LabelInput component
 // ------------------------------------------------------------
 class LabelInput extends React.Component {
-    componentDidMount({ formRefs, updateState, title } = this.props) {
-        formRefs[title] = this.refs[title];
-        updateState("FORM_REFS", formRefs);
+    componentDidMount(
+        { loginRefs, registerRefs, updateState, title, loginForm } = this.props
+    ) {
+        if (loginForm) {
+            loginRefs[title] = this.refs[title];
+            updateState("LOGIN_REFS", loginRefs);
+        } else {
+            registerRefs[title] = this.refs[title];
+            updateState("REGISTER_REFS", registerRefs);
+        }
     }
     render({ icon, title, type, onFocus, onBlur } = this.props) {
         return (

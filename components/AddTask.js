@@ -9,47 +9,8 @@ import moment from "moment"; // moment js for parsing dates
 // ------------------------------------------------------------
 // import components
 // ------------------------------------------------------------
-import TextField from "./TextField";
-import TextInput from "./TextInput";
-import Logo from "./Logo";
-// ------------------------------------------------------------
-// Logo Icon stateless component
-// ------------------------------------------------------------
-const LogoIcon = () => (
-    <div style={s.logo}>
-        <Logo
-            width={30}
-            height={30}
-            background={color.royalBlue}
-            check={color.white}
-            outline={color.royalBlue}
-        />
-    </div>
-);
-// ------------------------------------------------------------
-// Field Or Input stateless component
-// ------------------------------------------------------------
-const FieldOrInput = ({
-    isTextField,
-    textValue,
-    switchToInput,
-    switchToText
-}) => (
-    <React.Fragment>
-        {isTextField ? (
-            <TextField
-                checked={false}
-                description={textValue || "Add a task"}
-                onClick={switchToInput}
-            />
-        ) : (
-            <TextInput
-                onBlur={text => switchToText(text)}
-                description={textValue}
-            />
-        )}
-    </React.Fragment>
-);
+import LogoIcon from "./LogoIcon";
+import FieldOrInput from "./FieldOrInput";
 // ------------------------------------------------------------
 // AddTask component
 // ------------------------------------------------------------
@@ -150,7 +111,11 @@ class AddTask extends React.Component {
             <div style={s.container}>
                 {/* ADD A TASK DIV */}
                 <div style={s.taskHeader}>
-                    <LogoIcon />
+                    <LogoIcon
+                        background={color.royalBlue}
+                        check={color.white}
+                        outline={color.royalBlue}
+                    />
                     <FieldOrInput {...fieldOrInputProps} />
                 </div>
                 {/* ADD BUTTON */}

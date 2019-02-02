@@ -9,3 +9,21 @@ Password: pwd123
 
 Username: admin
 Password: pwd123
+
+### Design Choices Analysis Questions
+
+#### Why certain approaches were used, why others were not selected?
+
+TBA (To Be Answered soon)
+
+#### Design patterns used
+
+TBA
+
+#### Things I would do if I spent more time on this project
+
+TBA
+
+#### Other comments
+
+TBA

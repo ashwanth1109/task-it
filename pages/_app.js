@@ -30,7 +30,9 @@ class MyApp extends App {
         }
         return { pageProps };
     }
-
+    // ------------------------------------------------------------
+    // render method
+    // ------------------------------------------------------------
     render = ({ Component, pageProps, store } = this.props) => (
         <Container>
             {/* provider component makes store availabe to app */}

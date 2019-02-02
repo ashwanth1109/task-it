@@ -48,12 +48,16 @@ class UserClass {
             }
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
-            return this.create({
+            const createdUser = await this.create({
                 username,
                 password: hashedPassword,
                 name,
                 tasks: []
             });
+            return {
+                registerSuccessful: true,
+                user: createdUser
+            };
         } catch (err) {
             console.log(err);
         }

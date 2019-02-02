@@ -21,8 +21,8 @@ router.use((req, res, next) => {
 // ------------------------------------------------------------
 router.post("/register", async (req, res) => {
     try {
-        const user = await User.register(req.body);
-        res.json(user);
+        const registerStatus = await User.register(req.body); // req.body => username, password, name
+        res.json(registerStatus);
     } catch (err) {
         res.json(err);
     }
@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
 // ------------------------------------------------------------
 router.post("/login", async (req, res) => {
     try {
-        const loginStatus = await User.login(req.body);
+        const loginStatus = await User.login(req.body); // req.body => username, password
         res.json(loginStatus);
     } catch (err) {
         res.json(err);

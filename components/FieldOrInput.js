@@ -45,4 +45,4 @@ FieldOrInput.propTypes = {
 // ------------------------------------------------------------
 // export FieldOrInput
 // ------------------------------------------------------------
-export default FieldOrInput;
+export default React.memo(FieldOrInput);

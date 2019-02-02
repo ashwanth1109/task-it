@@ -65,4 +65,4 @@ SignInSection.propTypes = {
 // ------------------------------------------------------------
 // export SignInSection
 // ------------------------------------------------------------
-export default SignInSection;
+export default React.memo(SignInSection);

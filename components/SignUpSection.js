@@ -70,4 +70,4 @@ SignUpSection.propTypes = {
 // ------------------------------------------------------------
 // export SignUpSection
 // ------------------------------------------------------------
-export default SignUpSection;
+export default React.memo(SignUpSection);

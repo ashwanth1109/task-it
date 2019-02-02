@@ -33,4 +33,4 @@ const TaskList = ({ user }) => {
 // ------------------------------------------------------------
 // export TaskList withRedux => mapState only
 // ------------------------------------------------------------
-export default withRedux(TaskList, true, false);
+export default withRedux(React.memo(TaskList), true, false);

@@ -40,4 +40,4 @@ TextField.defaultProps = {
 // ------------------------------------------------------------
 // export TextField
 // ------------------------------------------------------------
-export default TextField;
+export default React.memo(TextField);

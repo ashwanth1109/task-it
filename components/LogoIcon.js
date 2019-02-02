@@ -42,4 +42,4 @@ LogoIcon.defaultProps = {
 // ------------------------------------------------------------
 // export LogoIcon
 // ------------------------------------------------------------
-export default LogoIcon;
+export default React.memo(LogoIcon);

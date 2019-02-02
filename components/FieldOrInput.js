@@ -33,6 +33,16 @@ const FieldOrInput = ({
     </React.Fragment>
 );
 // ------------------------------------------------------------
+// prop type validation
+// ------------------------------------------------------------
+FieldOrInput.propTypes = {
+    isTextField: PropTypes.bool.isRequired,
+    textValue: PropTypes.string.isRequired,
+    switchToInput: PropTypes.func.isRequired,
+    switchToText: PropTypes.func.isRequired,
+    checked: PropTypes.bool
+};
+// ------------------------------------------------------------
 // export FieldOrInput
 // ------------------------------------------------------------
 export default FieldOrInput;

@@ -24,6 +24,22 @@ const LogoIcon = ({ background, check, outline, onClick, animationTiming }) => (
     </div>
 );
 // ------------------------------------------------------------
+// prop type validation
+// ------------------------------------------------------------
+LogoIcon.propTypes = {
+    background: PropTypes.string.isRequired,
+    check: PropTypes.string.isRequired,
+    outline: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    animationTiming: PropTypes.number.isRequired
+};
+// ------------------------------------------------------------
+// default props
+// ------------------------------------------------------------
+LogoIcon.defaultProps = {
+    animationTiming: 0
+};
+// ------------------------------------------------------------
 // export LogoIcon
 // ------------------------------------------------------------
 export default LogoIcon;

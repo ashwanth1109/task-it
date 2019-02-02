@@ -1,7 +1,8 @@
 // ------------------------------------------------------------
 // import dependencies
 // ------------------------------------------------------------
-import { button } from "../styles/component";
+import { button } from "../styles/component"; // component styles
+import PropTypes from "prop-types"; // prop type validation
 // ------------------------------------------------------------
 // Button component
 // ------------------------------------------------------------
@@ -10,6 +11,23 @@ const Button = ({ children, style, onClick }) => (
         {children}
     </div>
 );
+// ------------------------------------------------------------
+// prop type validation
+// ------------------------------------------------------------
+Button.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired,
+    style: PropTypes.object,
+    onClick: PropTypes.func.isRequired
+};
+// ------------------------------------------------------------
+// default props
+// ------------------------------------------------------------
+Button.defaultProps = {
+    onClick: () => null
+};
 // ------------------------------------------------------------
 // export Button
 // ------------------------------------------------------------

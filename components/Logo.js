@@ -1,8 +1,8 @@
 // ------------------------------------------------------------
 // import dependencies
 // ------------------------------------------------------------
-import PropTypes from "prop-types";
-import color from "../styles/color";
+import color from "../styles/color"; // color palette
+import PropTypes from "prop-types"; // prop type validation
 // ------------------------------------------------------------
 // Logo Stateless SVG Component
 // ------------------------------------------------------------

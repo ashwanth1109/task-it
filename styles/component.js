@@ -4,6 +4,8 @@
 import { common, font } from "./style";
 import color from "./color";
 // ------------------------------------------------------------
+// PAGES
+// ------------------------------------------------------------
 // index page
 // ------------------------------------------------------------
 export const index = {
@@ -33,9 +35,6 @@ export const dashboard = {
         ...common.container,
         padding: "20px"
     },
-    spacer: {
-        height: "50px"
-    },
     header: {
         ...common.row,
         ...font.Lato
@@ -49,7 +48,58 @@ export const dashboard = {
         fontSize: "24px",
         color: color.royalBlue,
         ...common.fCenter
+    },
+    spacer: {
+        height: "50px"
     }
+};
+// ------------------------------------------------------------
+// COMPONENTS
+// ------------------------------------------------------------
+// addTask component
+// ------------------------------------------------------------
+export const addTask = {
+    container: {
+        width: "100%",
+        height: "100px",
+        marginTop: "20px",
+        ...common.col,
+        position: "relative"
+    },
+    taskHeader: {
+        width: "100%",
+        height: "60px",
+        borderTop: "1px solid #e0e0e0",
+        borderBottom: "1px solid #e0e0e0",
+        ...common.row,
+        ...common.alignCenter
+    },
+    add: {
+        position: "absolute",
+        width: "80px",
+        height: "80px",
+        borderRadius: "40px",
+        ...common.fCenter,
+        right: "20px",
+        top: "10px",
+        cursor: "pointer",
+        transition: "0.3s ease-in-out background-color"
+    },
+    addIcon: {
+        width: "20px"
+    }
+};
+// ------------------------------------------------------------
+// button component
+// ------------------------------------------------------------
+export const button = {
+    width: "320px",
+    height: "40px",
+    ...common.fCenter,
+    ...font.white,
+    borderRadius: "3px",
+    cursor: "pointer",
+    transition: "0.3s ease-in-out background-color"
 };
 // ------------------------------------------------------------
 // card component
@@ -86,54 +136,38 @@ export const labelInput = {
     }
 };
 // ------------------------------------------------------------
-// button component
+// logoIcon component
 // ------------------------------------------------------------
-export const button = {
-    width: "320px",
-    height: "40px",
-    ...common.fCenter,
-    ...font.white,
-    borderRadius: "3px",
-    cursor: "pointer",
-    transition: "0.3s ease-in-out background-color"
-};
-// ------------------------------------------------------------
-// addTask component
-// ------------------------------------------------------------
-export const addTask = {
+export const logoIcon = {
     container: {
-        width: "100%",
-        height: "100px",
-        marginTop: "20px",
-        ...common.col,
-        position: "relative"
-    },
-    taskHeader: {
-        width: "100%",
-        height: "60px",
-        borderTop: "1px solid #e0e0e0",
-        borderBottom: "1px solid #e0e0e0",
-        ...common.row,
-        ...common.alignCenter
-    },
-    logo: {
         width: "50px",
         height: "50px",
         ...common.fCenter
-    },
-    add: {
-        position: "absolute",
-        width: "80px",
-        height: "80px",
-        borderRadius: "40px",
+    }
+};
+// ------------------------------------------------------------
+// loginSection component
+// ------------------------------------------------------------
+export const loginSignUpSection = {
+    section: {
+        width: "100vw",
+        height: "100%",
         ...common.fCenter,
-        right: "20px",
-        top: "10px",
-        cursor: "pointer",
-        transition: "0.3s ease-in-out background-color"
+        position: "absolute",
+        transition: "1s ease-in-out left"
     },
-    addIcon: {
-        width: "20px"
+    cardContainer: {
+        margin: "50px 0",
+        ...font.Lato
+    },
+    button: {
+        margin: "20px auto"
+    },
+    signUpText: {
+        width: "100%",
+        ...common.fCenter,
+        color: color.royalBlue,
+        marginBottom: "20px"
     }
 };
 // ------------------------------------------------------------
@@ -147,11 +181,6 @@ export const task = {
         borderBottom: "1px solid #e0e0e0",
         ...common.row,
         ...common.alignCenter
-    },
-    logo: {
-        width: "50px",
-        height: "50px",
-        ...common.fCenter
     },
     dateIncomplete: {
         ...font.royalLato
@@ -181,11 +210,11 @@ export const textInputOrField = {
         fontSize: "20px",
         height: "25px",
         flex: 1,
-        overflow: "hidden",
-        cursor: "pointer"
+        overflow: "hidden"
     },
     incompleteTask: {
-        ...font.royalLato
+        ...font.royalLato,
+        cursor: "pointer"
     },
     completeTask: {
         ...font.lightGrayLato,
@@ -193,36 +222,5 @@ export const textInputOrField = {
     },
     textInput: {
         border: "0px"
-    }
-};
-// ------------------------------------------------------------
-// loginSection component
-// ------------------------------------------------------------
-export const loginSignUpSection = {
-    section: {
-        width: "100vw",
-        height: "100%",
-        ...common.fCenter,
-        position: "absolute",
-        transition: "1s ease-in-out left"
-    },
-    cardContainer: {
-        margin: "50px 0",
-        ...font.Lato
-    },
-    button: {
-        margin: "20px auto"
-    },
-    signUpText: {
-        width: "100%",
-        ...common.fCenter,
-        color: color.royalBlue,
-        marginBottom: "20px"
-    },
-    signUp: {
-        left: "300px"
-    },
-    login: {
-        left: "0px"
     }
 };
